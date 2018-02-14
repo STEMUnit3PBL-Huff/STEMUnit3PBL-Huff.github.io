@@ -1,393 +1,546 @@
-<!DOCTYPE>
-<html> 
-<body>
+<h1>Alex H., Garrett H., Zipporah P.</h1>
+<h2> Unit 3 PBL Quiz </h2>
+<div class="quiz-container">
+  <div id="quiz"></div>
+</div>
+<button id="previous">Previous Question</button>
+<button id="next">Next Question</button>
+<button id="submit">Submit Quiz</button>
+<div id="results"></div>
 
 
-<h1> STEM Unit 3 UNUM PBL </h1>
+<script>
+(function() {
+  const myQuestions = [
+  
 
-<h2> Spanish </h2>
+	{
+	  question: "(Spanish)1. How do you say 'January' in spanish?",
+	  answers: {
+		a: "julio",
+		b: "enero",
+		c: "junio",
+		d: "diciembre"
+	  },
+	  correctAnswer: "b"
+	},
+	{
+	  question: "(Spanish)2. How do you say, “it’s snowing” in spanish?",
+	  answers: {
+		a: "Llueve",
+		b: "Hace calor",
+		c: "Have frio",
+		d: "Nieva"
+	  },
+	  correctAnswer: "d"
+	},
+	{
+	  question: "(Spanish)3. How do you say '10:30' in Spanish?",
+	  answers: {
+		a: "Son las diez y diez",
+		b: "Son las seis y media",
+		c: "Son las diez y media",
+		d: "Son las cinco y cuarto"
+	  },
+	  correctAnswer: "c"
+	},
+	{
+	  question: "(Spanish)4. How do you say, “what time is it” in spanish?",
+	  answers: {
+		a: "¿Qué hora es?",
+		b: "Qué es hora",
+		c: "De la noche",
+		d: "De la tarde"
+	  },
+	  correctAnswer: "a"
+	},
+	{
+	  question: "(Spanish)5. Write the equation “5+74= 79” in spanish",
+	  answers: {
+		a: "Cinco por setenta y cuatro son setenta y nueve",
+		b: "Cinco más sesenta y cuatro es sesenta y nueve",
+		c: "Cinco por sesenta y cuatro es sesenta y nueve",
+		d: "Cinco más setenta y cuatro son setenta y nueve"
+	  },
+	  correctAnswer: "d"
+	},
+	{
+	  question: "(Spanish)6. Write the equation “8/2=4” in Spanish",
+	  answers: {
+		a: "Ocho menos dos son cuatro",
+		b: "Ocho entre dos es cuatro",
+		c: "Ocho entre dos son cuatro",
+		d: "Ocho menos dos es cuatro"
+	  },
+	  correctAnswer: "c"
+	},
+	{
+	  question: "(Spanish)7. How do you say, “He is very messy”, in Spanish?",
+	  answers: {
+		a: "Ella muy es desordenado",
+		b: "Ella muy es deportista",
+		c: "El es muy desordenado",
+		d: "El es muy deportista"
+	  },
+	  correctAnswer: "c"
+	},
+	{
+	  question: "(History)1. Hitler became the essential dictator of Germany in which decade?",
+	  answers: {
+		a: "1920s",
+		b: "1930s",
+		c: "1940s",
+		d: "1950s"
+	  },
+	  correctAnswer: "a"
+	},
+	{
+	  question: "(History)2. What war during the 1930s greatly made a big impact on military tactics that were used in WW2?",
+	  answers: {
+		a: "The Spanish-American War",
+		b: "The Boer War",
+		c: "The Spanish Civil War",
+		d: "Korean War"
+	  },
+	  correctAnswer: "c"
+	},
+	{
+	  question: "(History)3. What were the reasons why WW2 began?",
+	  answers: {
+		a: "Rise of dicators in Europe ",
+		b: "Acts of Aggression",
+		c: "Treaty of Versailles",
+		d: "All of the Above"
+	  },
+	  correctAnswer: "d"
+	},
+	{
+	  question: "(History)4. Who was the leader of the Soviet Union during WW2?",
+	  answers: {
+		a: "Lenin",
+		b: "Stalin",
+		c: "Trotsky",
+		d: "Khrushchev"
+	  },
+	  correctAnswer: "b"
+	},
+	{
+	  question: "(History)5. Who did the Axis Powers consist of?",
+	  answers: {
+		a: "Germany, Russia, Japan",
+		b: "Germany, Italy, Romania",
+		c: "Germany, Finland, Japan",
+		d: "Germany, Italy, Japan"
+	  },
+	  correctAnswer: "d"
+	},
+	{
+	  question: "(History)6. What was the reason we celebrate D-Day?",
+	  answers: {
+		a: "The Allied invasion off the coast of Normandy",
+		b: "The Allied invasion of Southern France",
+		c: "The Allied invasion of Italy", 
+		d: "The Soviet invasion of Germany"
+	  },
+	  correctAnswer: "a"
+	},
+	{
+	  question: "(History)7. After World War 2, Germany was divided and occupied by who?",
+	  answers: {
+		a: "The Allied Powers",
+		b: "The Axis Powers",
+		c: "The Central Powers",
+		d: "The Soviet Union"
+	  },
+	  correctAnswer: "a"
+	},
+	{
+	  question: "(History)8. What was the situation throughout much of Europe after the war?",
+	  answers: {
+		a: "The countries were devastated",
+		b: "Roads and bridges needed repair",
+		c: "Cities and buildings needed to be rebuilt",
+		d: "All of the Above"
+	  },
+	  correctAnswer: "d"
+	},
+	{
+	  question: "(History)9. What Asian country was divided into North and South after the war and is still divided today?",
+	  answers: {
+		a: "Japan",
+		b: "China",
+		c: "Korea",
+		d: "Loas"
+	  },
+	  correctAnswer: "c"
+	},
+	{
+	  question: "(Chemistry)1. Which of the following order is correct for the first ionization energies of their elements?",
+	  answers: {
+		a: "B < Be < N < O",
+		b: "Be < B < N < O",
+		c: "B < Be < O < N",
+		d: "B < O < Be < N"
+	  },
+	  correctAnswer: "c"
+	},
+	{
+	  question: "(Chemistry)2. The correct order of second ionization energies of C, N, O, and F is:",
+	  answers: {
+		a: "O > F > N > C",
+		b: "C > N > O > F",
+		c: "O > N > F > C",
+		d: "F > O > N > C"
+	  },
+	  correctAnswer: "a"
+	},
+	{
+	  question: "(Chemistry)3. Soil is what kind of mixture?",
+	  answers: {
+		a: "Hydrophilic",
+		b: "Heterogeneous",
+		c: "Homogeneous",
+		d: "Heterozygous"
+	  },
+	  correctAnswer: "b"
+	},
+	{
+	  question: "(Chemistry)4. What is Ammonium?",
+	  answers: {
+		a: "An Element",
+		b: "A Molecule",
+		c: "A Compound",
+		d: "Something related to Chemistry"
+	  },
+	  correctAnswer: "c"
+	},
+	{
+	  question: "(Chemistry)5. Who created a goid foil experiment and created a model after his findings?",
+	  answers: {
+		a: "Dalton",
+		b: "Thompson",
+		c: "Bohr",
+		d: "Rutherford"
+	  },
+	  correctAnswer: "d"
+	},
+	{
+	  question: "(Chemistry)6. Which atom model is based off probability rather than certainty?",
+	  answers: {
+		a: "Plum Model",
+		b: "Quantum Model",
+		c: "Bohr Model",
+		d: "Billiard Ball Model"
+	  },
+	  correctAnswer: "b"
+	},
+	{
+	  question: "(English)1. Which of the following is NOT a complete sentence?",
+	  answers: {
+		a: "Rex was Doc's Smith's horse.",
+		b: "He was a handsome Palomino.",
+		c: "Willy hitched Rex to the wagon.",
+		d: "Rode back to Grandfather's farm."
+	  },
+	  correctAnswer: "d"
+	},
+	{
+	  question: "(English)2. Select the complete sentence from below.",
+	  answers: {
+		a: "Daisies were swaying in the breeze.",
+		b: "By remaining silent.",
+		c: "In the middle of the night.",
+		d: "No one’s fault."
+	  },
+	  correctAnswer: "a"
+	},
+	{
+	  question: "(English)3. Which of the following is a comma splice?",
+	  answers: {
+		a: "When a student likes his class, he is more likely to achieve good grades.",
+		b: "John is always late for work, nobody seems to care.",
+		c: "After I was paid last week, I was able to go grocery shopping.",
+		d: "Due to the fact that I am busy this week, I don't have time for sports."
+	  },
+	  correctAnswer: "b"
+	},
+	{
+	  question: "(English)4. Which sentence has correct subject-verb agreement?",
+	  answers: {
+		a: "The players are going, to the pizza place after todays game.",
+		b: "The players is going to the pizza place after todays game.",
+		c: "The players going to the pizza place after todays game.",
+		d: "The players are going to the pizza place after todays game."
+	  },
+	  correctAnswer: "d"
+	},{
+	  question: "(English)5. Which sentence has correct subject-verb agreement?",
+	  answers: {
+		a: "That friend of my two parents is waving at us.",
+		b: "That friend of my two parents waving at us",
+		c: "That friend of my two parents are waving at us.",
+		d: "That friend, who is a friend of my parents, are waving at us."
+	  },
+	  correctAnswer: "a"
+	},
+	{
+	  question: "(English)6. Which sentence has the correct use of a colon?",
+	  answers: {
+		a: "The American flag has three colors; red, white, and blue.",
+		b: "The American flag has three colors: Red, white, and blue.",
+		c: "The American flag has three colors: red, white, and blue.",
+		d: "The American flag has: three colors. Red, white, and blue."
+	  },
+	  correctAnswer: "c"
+	},
+	{
+	  question: "(Geometry)1. Which quadrilateral has only one pair of sides that are parallel?",
+	  answers: {
+		a: "Kite",
+		b: "Square",
+		c: "Rhombus",
+		d: "Trapezoid"
+	  },
+	  correctAnswer: "d"
+	},
+	{
+	  question: "(Geometry)2. Which is a property of a square?",
+	  answers: {
+		a: "All sides are equal and all angles are right angles",
+		b: "Only one pair of opposite angles are parallel",
+		c: "Two pairs of consecutive sides are equal",
+		d: "Has two acute and two obtuse angles"
+	  },
+	  correctAnswer: "a"
+	},
+	{
+	  question: "(Geometry)3. Given quadrilateral SHIP with coordinates S(-8, 0), H(0, 6), I(10,6) and P(2, 0). What is the best name for this figure?",
+	  answers: {
+		a: "Parallelogram",
+		b: "Rectangle",
+		c: "Rhombus",
+		d: "Square"
+	  },
+	  correctAnswer: "c"
+	},
+	{
+	  question: "(Geometry)4. Which quadrilateral has no parallel sides?",
+	  answers: {
+		a: "Square",
+		b: "Trapezoid",
+		c: "Parallelogram",
+		d: "Kite"
+	  },
+	  correctAnswer: "d"
+	},
+	{
+	  question: "(Geometry)5. Quadrilateral ABCD has coordinates A(4,7), B(9,7), C(6,3), and D(1,3). What is it?",
+	  answers: {
+		a: "Trapezoid",
+		b: "Rhombus",
+		c: "Square",
+		d: "Rectangle"
+	  },
+	  correctAnswer: "b"
+	},
+	{
+	  question: "(Geometry)6. This quadrilateral has diagonals that intersect at a 90 angle. What is it?",
+	  answers: {
+		a: "Square",
+		b: "Kite",
+		c: "Trapezoid",
+		d: "Rectangle"
+	  },
+	  correctAnswer: "a"
+	}
 
+  ];
+
+  function buildQuiz() {
+
+	const output = [];
+
+
+	myQuestions.forEach((currentQuestion, questionNumber) => {
+
+	  const answers = [];
+
+
+	  for (letter in currentQuestion.answers) {
+
+		answers.push(
+		  `<label>
+			 <input type="radio" name="question${questionNumber}" value="${letter}">
+			  ${letter} :
+			  ${currentQuestion.answers[letter]}
+		   </label>`
+		);
+	  }
+
+
+	  output.push(
+		`<div class="slide">
+		   <div class="question"> ${currentQuestion.question} </div>
+		   <div class="answers"> ${answers.join("")} </div>
+		 </div>`
+	  );
+	});
+
+
+	quizContainer.innerHTML = output.join("");
+  }
+
+  function showResults() {
+
+	const answerContainers = quizContainer.querySelectorAll(".answers");
+
+
+	let numCorrect = 0;
+
+
+	myQuestions.forEach((currentQuestion, questionNumber) => {
+
+	  const answerContainer = answerContainers[questionNumber];
+	  const selector = `input[name=question${questionNumber}]:checked`;
+	  const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+
+
+	  if (userAnswer === currentQuestion.correctAnswer) {
+
+		numCorrect++;
+
+
+		answerContainers[questionNumber].style.color = "lightgreen";
+	  } else {
+
+
+		answerContainers[questionNumber].style.color = "red";
+	  }
+	});
+
+
+	resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+  }
+
+  function showSlide(n) {
+	slides[currentSlide].classList.remove("active-slide");
+	slides[n].classList.add("active-slide");
+	currentSlide = n;
+	
+	if (currentSlide === 0) {
+	  previousButton.style.display = "none";
+	} else {
+	  previousButton.style.display = "inline-block";
+	}
+	
+	if (currentSlide === slides.length - 1) {
+	  nextButton.style.display = "none";
+	  submitButton.style.display = "inline-block";
+	} else {
+	  nextButton.style.display = "inline-block";
+	  submitButton.style.display = "none";
+	}
+  }
+
+  function showNextSlide() {
+	showSlide(currentSlide + 1);
+  }
+
+  function showPreviousSlide() {
+	showSlide(currentSlide - 1);
+  }
+
+  const quizContainer = document.getElementById("quiz");
+  const resultsContainer = document.getElementById("results");
+  const submitButton = document.getElementById("submit");
+
+
+  buildQuiz();
+
+  const previousButton = document.getElementById("previous");
+  const nextButton = document.getElementById("next");
+  const slides = document.querySelectorAll(".slide");
+  let currentSlide = 0;
+
+  showSlide(0);
+
+
+  submitButton.addEventListener("click", showResults);
+  previousButton.addEventListener("click", showPreviousSlide);
+  nextButton.addEventListener("click", showNextSlide);
+})();
+</script>
 <style>
-h3, h4, h5, h6, h7
-{
-font-weight: normal;
+@import url(https://fonts.googleapis.com/css?family=Work+Sans:300,600);
+
+body{
+	font-size: 20px;
+	font-family: 'Work Sans', sans-serif;
+	color: #4d4651;
+  font-weight: 400;
+  text-align: center;
+  background-color: #DF9D94;
+}
+h1{
+  font-weight: 300;
+  margin: 0px;
+  padding: 10px;
+  font-size: 20px;
+  background-color: #fff;
+  color: #444;
+}
+.question{
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.answers {
+  margin-bottom: 20px;
+  text-align: left;
+  display: inline-block;
+}
+.answers label{
+  display: block;
+  margin-bottom: 10px;
+}
+button{
+  font-family: 'Work Sans', sans-serif;
+	font-size: 22px;
+	background-color: #279;
+	color: #fff;
+	border: 0px;
+	border-radius: 3px;
+	padding: 20px;
+	cursor: pointer;
+	margin-bottom: 20px;
+}
+button:hover{
+	background-color: #38a;
+}
+
+
+
+
+
+.slide{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.active-slide{
+  opacity: 1;
+  z-index: 2;
+}
+.quiz-container{
+  position: relative;
+  height: 200px;
+  margin-top: 40px;
 }
 </style>
 
-<h3>
-
-<p class="question">1. What is the answer to this question?</p>
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-
-
-
-<p class="question">2. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-
-<p class="question">3. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul> 
-
-<p class="question">4. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-       
-<p class="question">5. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-
-<p class="question">6. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-       
-        
-</h3> 
-
-<h2> English </h2>
-
-<h3>
-
-<p class="question">1. What is the answer to this question?</p>
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-
-
-
-<p class="question">2. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-
-<p class="question">3. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul> 
-
-<p class="question">4. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-       
-<p class="question">5. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-
-<p class="question">6. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-       
-        
-</h3> 
-
-<h2> Geometry </h2>
-
-<h3>
-
-<p class="question">1. What is the answer to this question?</p>
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-
-
-
-<p class="question">2. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-
-<p class="question">3. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul> 
-
-<p class="question">4. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-       
-<p class="question">5. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-
-<p class="question">6. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-       
-        
-</h3> 
-
-<h2> Chemistry </h2> 
-
-<h3>
-
-<p class="question">1. What is the answer to this question?</p>
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-
-
-
-<p class="question">2. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-
-<p class="question">3. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul> 
-
-<p class="question">4. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-       
-<p class="question">5. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-
-<p class="question">6. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-       
-        
-</h3> 
-
-<h2> US History </h2> 
-
-<h3>
-
-<p class="question">1. What is the answer to this question?</p>
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-
-
-
-<p class="question">2. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-
-<p class="question">3. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul> 
-
-<p class="question">4. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-       
-<p class="question">5. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-
-<p class="question">6. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-
-<p class="question">7. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-       <p class="question">8. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" id="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-       
-<p class="question">9. What is the answer to this question?</p>        
-
-
-<ul class="answers">            
-<input type="radio" name="q2" value="a" id="q2a"><label for="q2a">Answer 1</label><br/>           
-<input type="radio" name="q2" value="b" id="q2b"><label for="q2b">Answer 2</label><br/>            
-<input type="radio" name="q2" value="c" id="q2c"><label for="q2c">Answer 3</label><br/>           
-<input type="radio" name="q2" value="d" lid="q2d"><label for="q2d">Answer 4</label><br/>       
-</ul>        
-       
-       
-        
-</h3> 
-
-
-
-</body>
-</html>
+            
+      
+     
